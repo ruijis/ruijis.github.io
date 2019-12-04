@@ -11155,88 +11155,94 @@
   <Campus id="aim0001">
     <Building buildingType="Office" id="aim0002">
       <Space zoneIdRef="aim1001" id="aim0003">
-        <AirLoopEquipmentId airLoopEquipIdRef="aim1105" />
-        <HydronicLoopEquipmentId hydronicLoopEquipIdRef="aim1113" />
+        <Name>Zone1-Space1</Name>
+        <AirLoopEquipmentId airLoopEquipIdRef="aim1107" />
+        <HydronicLoopEquipmentId hydronicLoopEquipIdRef="aim1115" />
       </Space>
       <Space id="aim0004">
+        <Name>AHU1Room</Name>
         <AirLoopEquipmentId airLoopEquipIdRef="aim1102" />
         <AirLoopEquipmentId airLoopEquipIdRef="aim1103" />
-        <HydronicLoopEquipmentId hydronicLoopEquipIdRef="aim" />
+        <HydronicLoopEquipmentId hydronicLoopEquipIdRef="aim1104" />
+        <HydronicLoopEquipmentId hydronicLoopEquipIdRef="aim1105" />
       </Space>
     </Building>
   </Campus>
+
   <!-- 1st Floor, zone1, sencondary conditioned air loops and hot water loops -->
   <Zone id="aim1001">
     <OAFlowPerPerson unit="LPerSec">7.079212</OAFlowPerPerson>
     <DesignHeatT unit="C">21.11111</DesignHeatT>
     <DesignCoolT unit="C">23.33333</DesignCoolT>
-    <AirLoopId airLoopIdRef="aim1104" />
+    <AirLoopId airLoopIdRef="aim1106" />
     <HydronicLoopId hydronicLoopIdRef="aim1113" />
     <Name>Zone1</Name>
   </Zone>
+  
+  <hvacSystems systemType="VAVReheatFan">
+    <!-- 1st Floor, all zones, AHU1, primary conditioned air loop -->
+    <AirLoop id="aim1101" loopType="PrimaryConditionedAir">
+      <Name>AHU1</Name>
+      <AirLoopEquipment id="aim1105" equipmentType="Coil">
+        <Name>AHU1-CoolingCoil</Name>
+        <HydronicLoopId hydronicLoopIdRef="aim1118" />
+      </AirLoopEquipment>
+      <AirLoopEquipment id="aim1104" equipmentType="Coil">
+        <Name>AHU1-HeatingCoil</Name>
+        <HydronicLoopId hydronicLoopIdRef="aim1114" />
+      </AirLoopEquipment>
+      <AirLoopEquipment id="aim1103" equipmentType="Fan">
+        <Name>AHU1-Fan1</Name>
+      </AirLoopEquipment>
+    </AirLoop>
+    <!-- 1st Floor, zone1, VAV reheat box, secondary conditioned air -->
+    <AirLoop id="aim1106" loopType="SecondaryConditionedAir">
+      <Name>AHU1-Zone1</Name>
+      <AirLoopEquipment id="aim1107" equipmentType="VAVBox">
+        <Name>AHU1-VAV1</Name>
+        <HydronicLoopId hydronicLoopIdRef="aim1113" />
+      </AirLoopEquipment>
+    </AirLoop>
 
-  <!-- 1st Floor, all zones, AHU1, primary conditioned air loop -->
-  <AirLoop id="aim1101" loopType="PrimaryConditionedAir">
-    <Name>AHU1</Name>
-    <AirLoopEquipment id="aim1102" equipmentType="Fan">
-      <Name>AHU1-Fan1</Name>
-    </AirLoopEquipment>
-    <AirLoopEquipment id="aim1103" equipmentType="Fan">
-      <Name>AHU1-Fan2</Name>
-    </AirLoopEquipment>
-    <AirLoopEquipment id="aim1104" equipmentType="Coil">
-      <Name>AHU1-HeatingCoil</Name>
-      <HydronicLoopId hydronicLoopIdRef="aim1114" />
-    </AirLoopEquipment>
-    <AirLoopEquipment id="aim1105" equipmentType="Coil">
-      <Name>AHU1-CoolingCoil</Name>
-      <HydronicLoopId hydronicLoopIdRef="aim1118" />
-    </AirLoopEquipment>
-  </AirLoop>
+    <!-- Whole Building, primary hot water loop -->
+    <HydronicLoop id="aim1111" loopType="PrimaryHotWater" fluidType="Water">
+      <Name>HW1</Name>
+      <HydronicLoopEquipment id="aim1112" equipmentType="Boiler">
+        <Name>HW1-Boiler1</Name>
+      </HydronicEquipment>
+      <HydronicLoopEquipment id="aim1120" equipmentType="Pump">
+        <Name>HW1-Boiler1-Pump1</Name>
+      </HydronicEquipment>
+    </HydronicLoop>
+    <!-- 1st Floor, secondary hot water loop -->
+    <HydronicLoop id="aim1113" loopType="SecondaryHotWater" fluidType="Water">
+      <Name>HW1-Floor1</Name>
+      <!-- AHU1 heating coil -->
+      <HydronicLoopEquipment id="aim1114" equipmentType="Coil">
+        <Name>HW1-AHU1Coil</Name>
+      </HydronicEquipment>
+      <!-- VAV1 reheat coil -->
+      <HydronicLoopEquipment id="aim1115" equipmentType="Coil">
+        <Name>HW1-AHU1VAV1Coil</Name>
+      </HydronicEquipment>
+    </HydronicLoop>
 
-  <!-- 1st Floor, zone1, VAV reheat box -->
-  <AirLoop id="aim1106" loopType="SecondaryConditionedAir">
-    <Name>AHU1-Zone1</Name>
-    <AirLoopEquipment id="aim1107" equipmentType="VAVBox">
-      <Name>AHU1-VAV1</Name>
-      <HydronicLoopId hydronicLoopIdRef="aim1115" />
-    </AirLoopEquipment>
-  </AirLoop>
-
-  <!-- Whole Building, primary hot water loop -->
-  <HydronicLoop id="aim1111" loopType="PrimaryHotWater" fluidType="Water">
-    <Name>HW1</Name>
-    <HydronicLoopEquipment id="aim1112" equipmentType="Boiler">
-      <Name>HW1-Boiler1</Name>
-    </HydronicEquipment>
-  </HydronicLoop>
-  <!-- 1st Floor, secondary hot water loop -->
-  <HydronicLoop id="aim1113" loopType="SecondaryHotWater" fluidType="Water">
-    <Name>HW1-Floor1</Name>
-    <!-- AHU1 heating coil -->
-    <HydronicLoopEquipment id="aim1114" equipmentType="Coil" spaceIdRef="aim0005">
-      <Name>HW1-AHU1Coil</Name>
-    </HydronicEquipment>
-    <!-- VAV1 reheat coil -->
-    <HydronicLoopEquipment id="aim1115" equipmentType="Coil" spaceIdRef="aim0006">
-      <Name>HW1-AHU1VAV1Coil</Name>
-    </HydronicEquipment>
-  </HydronicLoop>
-
-  <!-- Whole buidling, primary chilled water loop level -->
-  <HydronicLoop id="aim1116" loopType="PrimaryChilledWater" fluidType="Water">
-    <Name>CHW1</Name>
-    <HydronicLoopEquipment id="aim1117" equipmentType="Chiller" spaceIdRef="aim0006">
-      <Name>Chiller1</Name>   
-    </HydronicEquipment>
-  </HydronicLoop>
-  <!-- 1st floor,  secondary chilled water loop -->
-  <HydronicLoop id="aim1118" loopType="SecondaryChilledWater" fluidType="Water">
-    <Name>CHW1-1</Name>
-    <HydronicLoopEquipment id="aim1118" equipmentType="Coil">
-      <Name>CoolingCoil</Name>
-    </HydronicEquipment>
-  </HydronicLoop>
-
-
+    <!-- Whole buidling, primary chilled water loop level -->
+    <HydronicLoop id="aim1116" loopType="PrimaryChilledWater" fluidType="Water">
+      <Name>CHW1</Name>
+      <HydronicLoopEquipment id="aim1117" equipmentType="Chiller">
+        <Name>CHW1-Chiller1</Name>   
+      </HydronicEquipment>
+      <HydronicLoopEquipment id="aim1121" equipmentType="Pump">
+        <Name>CHW1-Chiller1-Pump1</Name>
+      </HydronicEquipment>
+    </HydronicLoop>
+    <!-- 1st floor, secondary chilled water loop -->
+    <HydronicLoop id="aim1118" loopType="SecondaryChilledWater" fluidType="Water">
+      <Name>CHW1-1</Name>
+      <HydronicLoopEquipment id="aim1118" equipmentType="Coil">
+        <Name>CoolingCoil</Name>
+      </HydronicLoopEquipment>
+    </HydronicLoop>
+  </hvacSystems>
 </gbXML>
