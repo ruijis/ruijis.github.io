@@ -1,0 +1,80 @@
+/*!
+ * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template-overviews/scrolling-nav)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
+ */
+header {
+  padding: 156px 0 100px;
+}
+
+section {
+  padding: 150px 0;
+}
+
+.navbar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.navbar-position{
+  position: absolute;
+  left: 10vw;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 0.25rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+
+.navbar-nav{
+  position: absolute;
+  right: 10vw;
+}
+
+.nav-link {
+  display: inline-block;
+  margin-right: 0rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  /* word-spacing: 0rem; */
+}
+
+
+/* the color of the left side bar */
+.navbar-dark .navbar-brand {
+  color: rgba(255, 255, 255, 0.5);
+}
+.navbar-dark .navbar-brand.active {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* the color of the right side bar */
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* the color of the right side active when scroll */
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+  color: rgba(255, 255, 255, 1);
+}
